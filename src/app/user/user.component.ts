@@ -13,6 +13,12 @@ export class UserComponent implements OnInit {
   user = this.userService.readUser;
   repos = this.userService.readRepos;
 
+  showRepos = signal(false);
+
+  toggleRepos() {
+    this.showRepos.update((value) => !value);
+  }
+
   userName = model('Peagah-vieira');
 
   ngOnInit(): void {

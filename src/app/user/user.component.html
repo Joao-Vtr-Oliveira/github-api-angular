@@ -1,23 +1,13 @@
 <div
-  class="w-full max-w-2xl mx-auto p-8 border rounded-2xl bg-white shadow-xl text-center"
+  class="w-full max-w-2xl min-h-[600px] mx-auto p-8 border rounded-2xl bg-white shadow-xl text-center"
 >
   <p class="text-2xl font-bold text-purple-600 mb-4">GitHub Profile</p>
 
   <div class="flex justify-center mb-4">
     @if (user()?.avatar_url) {
-      <img
-        class="rounded-full border-4 border-purple-300 shadow-md"
-        width="200"
-        [src]="user()?.avatar_url"
-        alt="User avatar"
-      />
+      <img class="rounded-full border-4 border-purple-300 shadow-md" width="200" [src]="user()?.avatar_url" alt="User avatar" />
     } @else {
-      <img
-        class="rounded-full border-4 border-gray-300 shadow-md"
-        width="200"
-        src="pngegg.png"
-        alt="Fallback avatar"
-      />
+      <img class="rounded-full border-4 border-gray-300 shadow-md" width="200" src="pngegg.png" alt="Fallback avatar" />
     }
   </div>
 
@@ -31,11 +21,10 @@
 
   <p class="text-sm text-gray-600 italic mb-2">{{ user()?.bio }}</p>
 
+  <!-- Dados extras -->
   <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
     <img src="followers.svg" class="w-5 h-5" />
-    <span class="text-sm">
-      {{ user()?.followers }} Followers · {{ user()?.following }} Following
-    </span>
+    <span class="text-sm">{{ user()?.followers }} Followers · {{ user()?.following }} Following</span>
   </div>
 
   @if (user()?.company) {
@@ -67,9 +56,7 @@
 
   <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
     <img src="date.svg" class="w-5 h-5" />
-    <span class="text-sm">
-      Member since: {{ user()?.created_at | date:'mediumDate' }}
-    </span>
+    <span class="text-sm">Member since: {{ user()?.created_at | date: 'mediumDate' }}</span>
   </div>
 
   <!-- Input + Botão -->
@@ -87,4 +74,44 @@
       Search
     </button>
   </div>
+
+  <!-- Toggle botão -->
+  <div class="mt-6">
+    <button
+      (click)="toggleRepos()"
+      class="text-sm text-purple-600 hover:underline focus:outline-none"
+    >
+      {{ showRepos() ? 'Hide' : 'Show' }} Repositories
+    </button>
+  </div>
+
+  <!-- Repos (condicional) -->
+  @if (showRepos() && repos()?.length) {
+    <div class="mt-6 text-left overflow-auto max-h-[400px]">
+      <h2 class="text-xl font-bold mb-4 text-purple-600">Public Repositories</h2>
+      <ul class="space-y-4">
+        @for (repo of repos(); track repo.id) {
+          <li class="p-4 border rounded-lg shadow-sm hover:shadow-md transition duration-200">
+            <a
+              [href]="repo.html_url"
+              target="_blank"
+              class="text-lg font-semibold text-gray-800 hover:text-purple-600 hover:underline"
+            >
+              {{ repo.name }}
+            </a>
+            @if (repo.description) {
+              <p class="text-sm text-gray-600 italic">{{ repo.description }}</p>
+            }
+            @if (repo.language) {
+              <div class="text-xs text-gray-500 mt-1 flex gap-4 flex-wrap">
+                <span>Language: {{ repo.language }}</span>
+                <span>★ {{ repo.stargazers_count }}</span>
+                <span>🍴 {{ repo.forks_count }}</span>
+              </div>
+            }
+          </li>
+        }
+      </ul>
+    </div>
+  }
 </div>

@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { repos, user } from './dummyuser';
 import { AvatarComponent } from "../avatar/avatar.component";
 import { SearchComponent } from "../search/search.component";
+import { RepositoriesComponent } from "../repositories/repositories.component";
 
 @Component({
   selector: 'app-user',
-  imports: [DatePipe, FormsModule, AvatarComponent, SearchComponent],
+  imports: [DatePipe, FormsModule, AvatarComponent, SearchComponent, RepositoriesComponent],
   templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit {
@@ -18,12 +19,6 @@ export class UserComponent implements OnInit {
 
   // user = signal(user);
   // repos = signal(repos);
-
-  showRepos = signal(false);
-
-  toggleRepos() {
-    this.showRepos.update((value) => !value);
-  }
 
   userName = signal('Peagah-vieira');
 

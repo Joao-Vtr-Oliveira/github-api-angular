@@ -1,11 +1,9 @@
 <div
-  class="w-full max-w-3xl mx-auto p-3 sm:p-8 border rounded-2xl bg-white shadow-xl text-center flex flex-col max-h-none sm:max-h-[90vh]"
+  class="w-full max-w-3xl mx-auto my-8 p-3 sm:p-8 border rounded-2xl bg-white shadow-xl text-center flex flex-col"
 >
   <p class="text-2xl font-bold text-purple-600 mb-4">GitHub Profile</p>
 
-  
-  <app-avatar [user]="user()"/>
-
+  <app-avatar [user]="user()" />
 
   <a
     [href]="user()?.html_url"
@@ -18,9 +16,7 @@
   <p class="text-sm text-gray-600 italic mb-4">{{ user()?.bio }}</p>
 
   <!-- Dados extras -->
-  <div
-    class="flex flex-wrap justify-center items-center gap-3 text-gray-700 mb-4"
-  >
+  <div class="flex flex-wrap justify-center items-center gap-3 text-gray-700 mb-4">
     <div class="flex items-center gap-2">
       <img src="followers.svg" class="w-5 h-5" />
       <span class="text-sm">{{ user()?.followers }} Followers</span>
@@ -30,79 +26,41 @@
   </div>
 
   @if (user()?.company) {
-  <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
-    <img src="company.svg" class="w-5 h-5" />
-    <a
-      [href]="'https://github.com/' + user()?.company?.replace('@', '')"
-      class="text-sm hover:text-purple-600 hover:underline"
-      target="_blank"
-    >
-      {{ user()?.company }}
-    </a>
-  </div>
-  } @if (user()?.location) {
-  <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
-    <img src="location.svg" class="w-5 h-5" />
-    <span class="text-sm">{{ user()?.location }}</span>
-  </div>
-  } @if (user()?.email) {
-  <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
-    <img src="email.svg" class="w-5 h-5" />
-    <span class="text-sm">{{ user()?.email }}</span>
-  </div>
+    <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
+      <img src="company.svg" class="w-5 h-5" />
+      <a
+        [href]="'https://github.com/' + user()?.company?.replace('@', '')"
+        class="text-sm hover:text-purple-600 hover:underline"
+        target="_blank"
+      >
+        {{ user()?.company }}
+      </a>
+    </div>
+  }
+  @if (user()?.location) {
+    <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
+      <img src="location.svg" class="w-5 h-5" />
+      <span class="text-sm">{{ user()?.location }}</span>
+    </div>
+  }
+  @if (user()?.email) {
+    <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
+      <img src="email.svg" class="w-5 h-5" />
+      <span class="text-sm">{{ user()?.email }}</span>
+    </div>
   }
 
   <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
     <img src="date.svg" class="w-5 h-5" />
-    <span class="text-sm"
-      >Member since: {{ user()?.created_at | date : "mediumDate" }}</span
-    >
+    <span class="text-sm">
+      Member since: {{ user()?.created_at | date : "mediumDate" }}
+    </span>
   </div>
 
-  <!-- Input + Botão -->
-<app-search (inputEvent)="onEvent($event)" />
+  <app-search (inputEvent)="onEvent($event)" />
 
-  <!-- Toggle botão -->
-  <div class="mt-6">
-    <button
-      (click)="toggleRepos()"
-      class="text-sm text-purple-600 hover:underline focus:outline-none"
-    >
-      {{ showRepos() ? "Hide" : "Show" }} Repositories
-    </button>
+  <!-- Repositórios: scroll só aqui -->
+  <div class="mt-4">
+    <app-repositories [repos]="repos()" />
   </div>
-
-  <!-- Repos (condicional) -->
-  @if (showRepos() && repos()?.length) {
-  <div
-    class="mt-6 text-left flex-grow overflow-auto rounded-lg border border-gray-200 shadow-inner
-      max-h-none sm:max-h-[400px] px-1 sm:px-0"
-  >
-    <h2 class="text-xl font-bold mb-4 text-purple-600">Public Repositories</h2>
-    <ul class="space-y-4">
-      @for (repo of repos(); track repo.id) {
-      <li
-        class="p-4 border rounded-lg shadow-sm hover:shadow-md transition duration-200 bg-white"
-      >
-        <a
-          [href]="repo.html_url"
-          target="_blank"
-          class="text-lg font-semibold text-gray-800 hover:text-purple-600 hover:underline"
-        >
-          {{ repo.name }}
-        </a>
-        @if (repo.description) {
-        <p class="text-sm text-gray-600 italic mt-1">{{ repo.description }}</p>
-        } @if (repo.language) {
-        <div class="text-xs text-gray-500 mt-2 flex gap-4 flex-wrap">
-          <span>Language: {{ repo.language }}</span>
-          <span>★ {{ repo.stargazers_count }}</span>
-          <span>🍴 {{ repo.forks_count }}</span>
-        </div>
-        }
-      </li>
-      }
-    </ul>
-  </div>
-  }
 </div>

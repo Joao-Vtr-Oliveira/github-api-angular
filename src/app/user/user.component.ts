@@ -3,10 +3,11 @@ import { UserService } from './user.service';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { repos, user } from './dummyuser';
+import { AvatarComponent } from "../avatar/avatar.component";
 
 @Component({
   selector: 'app-user',
-  imports: [DatePipe, FormsModule],
+  imports: [DatePipe, FormsModule, AvatarComponent],
   templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit {

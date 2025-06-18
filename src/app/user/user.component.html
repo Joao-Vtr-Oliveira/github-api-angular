@@ -3,23 +3,9 @@
 >
   <p class="text-2xl font-bold text-purple-600 mb-4">GitHub Profile</p>
 
-  <div class="flex justify-center mb-4">
-    @if (user()?.avatar_url) {
-    <img
-      class="rounded-full border-4 border-purple-300 shadow-md"
-      width="200"
-      [src]="user()?.avatar_url"
-      alt="User avatar"
-    />
-    } @else {
-    <img
-      class="rounded-full border-4 border-gray-300 shadow-md"
-      width="200"
-      src="pngegg.png"
-      alt="Fallback avatar"
-    />
-    }
-  </div>
+  
+  <app-avatar [user]="user()"/>
+
 
   <a
     [href]="user()?.html_url"

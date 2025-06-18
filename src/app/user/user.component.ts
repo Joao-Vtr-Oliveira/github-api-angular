@@ -11,7 +11,7 @@ export class UserComponent implements OnInit{
   user = this.userService.readUser;
 
   ngOnInit(): void {
-    this.userService.fetchUser('joao-vtr-oliveira').subscribe(() => {
+    this.userService.fetchUser('Peagah-Vieira').subscribe(() => {
       console.log('User:', this.user())
     });
   }

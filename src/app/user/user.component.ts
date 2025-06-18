@@ -2,6 +2,7 @@ import { Component, inject, model, OnInit, signal } from '@angular/core';
 import { UserService } from './user.service';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { repos, user } from './dummyuser';
 
 @Component({
   selector: 'app-user',
@@ -12,6 +13,9 @@ export class UserComponent implements OnInit {
   private userService = inject(UserService);
   user = this.userService.readUser;
   repos = this.userService.readRepos;
+
+  // user = signal(user);
+  // repos = signal(repos);
 
   showRepos = signal(false);
 

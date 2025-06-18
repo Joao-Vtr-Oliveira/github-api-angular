@@ -4,7 +4,7 @@
   <p class="text-lg font-semibold">component works!</p>
   <div class="w-full flex justify-center">
     @if (user()?.avatar_url) {
-    <img class="rounded-full" width="200" [src]="user()?.avatar_url" />
+    <img class="rounded-full border border-black" width="200" [src]="user()?.avatar_url" />
     } @else {
     <img class="rounded-full" width="200" src="pngegg.png" />
     }

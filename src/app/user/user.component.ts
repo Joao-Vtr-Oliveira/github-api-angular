@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 export class UserComponent implements OnInit {
   private userService = inject(UserService);
   user = this.userService.readUser;
+  repos = this.userService.readRepos;
 
   userName = model('Peagah-vieira');
 
@@ -25,6 +26,9 @@ export class UserComponent implements OnInit {
   fetchUserData() {
     this.userService.fetchUser(this.userName()).subscribe(() => {
       console.log('User:', this.user());
+    });
+    this.userService.fetchUserRepos(this.userName()).subscribe(() => {
+      console.log('Repos:', this.repos());
     });
   }
 }

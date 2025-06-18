@@ -1,19 +1,30 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, model, OnInit, signal } from '@angular/core';
 import { UserService } from './user.service';
 import { DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
-  imports: [DatePipe],
+  imports: [DatePipe, FormsModule],
   templateUrl: './user.component.html',
 })
-export class UserComponent implements OnInit{
+export class UserComponent implements OnInit {
   private userService = inject(UserService);
   user = this.userService.readUser;
 
+  userName = model('Peagah-vieira');
+
   ngOnInit(): void {
-    this.userService.fetchUser('Peagah-Vieira').subscribe(() => {
-      console.log('User:', this.user())
+    this.fetchUserData();
+  }
+
+  onClick() {
+    this.fetchUserData();
+  }
+
+  fetchUserData() {
+    this.userService.fetchUser(this.userName()).subscribe(() => {
+      console.log('User:', this.user());
     });
   }
 }

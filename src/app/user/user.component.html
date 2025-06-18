@@ -48,6 +48,22 @@
   }
   <div class="flex items-center gap-2 mt-3">
     <img src="date.svg" class="w-7 h-7" alt="Email icon" />
-    <span class="text-sm text-gray-700">Member since: {{ user()?.created_at | date }}</span>
+    <span class="text-sm text-gray-700"
+      >Member since: {{ user()?.created_at | date }}</span
+    >
+  </div>
+  <div class="mt-5">
+    <input
+      placeholder="Username"
+      class="border rounded"
+      type="text"
+      [(ngModel)]="userName"
+    />
+    <button
+      class="border rounded p-2 ml-3 bg-purple-400 text-white cursor-pointer hover:bg-white hover:text-purple-400"
+      (click)="onClick()"
+    >
+      Search
+    </button>
   </div>
 </div>

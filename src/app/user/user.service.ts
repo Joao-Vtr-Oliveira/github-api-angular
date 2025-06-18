@@ -1,18 +1,21 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { UserType } from './user.modal';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  user = signal<UserType | undefined>(undefined);
+  private httpClient = inject(HttpClient);
+  private user = signal<UserType | undefined>(undefined);
 
-  async getUser(userName: string) {
-    const data = await fetch('https://api.github.com/users/' + userName);
-    const dataJson = await data.json() as UserType;
+  readUser = this.user.asReadonly();
 
-    console.log(dataJson);
-    this.user.update((oldUser) => dataJson);
+  fetchUser(userName: string) {
+    return this.httpClient.get<UserType>(('https://api.github.com/users/' + userName), {}).pipe(tap({
+      next: (userData) => this.user.set(userData)
+    }));
   }
 
 

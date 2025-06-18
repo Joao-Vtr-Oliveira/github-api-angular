@@ -22,6 +22,13 @@ export class UserComponent implements OnInit {
 
   userName = signal('Peagah-vieira');
 
+    showRepos = signal(false);
+
+
+  toggleRepos() {
+    this.showRepos.update((value) => !value);
+  }
+
   ngOnInit(): void {
     this.fetchUserData();
   }

@@ -1,19 +1,5 @@
-  <!-- Toggle botão -->
-  <div class="mt-6">
-    <button
-      (click)="toggleRepos()"
-      class="text-sm text-purple-600 hover:underline focus:outline-none"
-    >
-      {{ showRepos() ? "Hide" : "Show" }} Repositories
-    </button>
-  </div>
-
-  <!-- Repos (condicional) -->
-  @if (showRepos() && repos()?.length) {
-  <div
-  class="mt-6 text-left flex-grow overflow-auto rounded-lg  
-    max-h-none sm:max-h-[400px] px-1 sm:px-0"
-  >
+@if (repos()?.length) {
+  <div class="text-left overflow-auto rounded-lg px-1 sm:px-0">
     <h2 class="text-xl font-bold mb-4 text-purple-600 text-center">Public Repositories</h2>
     <ul class="space-y-4">
       @for (repo of repos(); track repo.id) {
@@ -40,4 +26,4 @@
       }
     </ul>
   </div>
-  }
+}

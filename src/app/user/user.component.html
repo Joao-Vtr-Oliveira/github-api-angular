@@ -1,5 +1,53 @@
-<div>
-  <p>component works!</p>
-  <p>{{user()?.name}}</p>
+<div
+  class="w-full max-w-md p-6 border rounded-lg bg-white shadow-md text-center"
+>
+  <p class="text-lg font-semibold">component works!</p>
+  <div class="w-full flex justify-center">
+    @if (user()?.avatar_url) {
+    <img class="rounded-full" width="200" [src]="user()?.avatar_url" />
+    } @else {
+    <img class="rounded-full" width="200" src="pngegg.png" />
+    }
+  </div>
+
+  <a
+    [href]="user()?.html_url"
+    class="text-sm font-mono font-bold text-gray-700 hover:text-purple-500 hover:underline"
+    target="_blank"
+    >{{ user()?.login }}</a
+  >
+  <p>{{ user()?.bio }}</p>
+  <div class="flex items-center gap-2 mt-3">
+    <img src="followers.svg" class="w-6 h-6" alt="People icon" />
+    <span class="text-sm text-gray-700"
+      >{{ user()?.followers }} Followers ·
+      {{ user()?.following }} Following</span
+    >
+  </div>
+
+  @if (user()?.company) {
+  <div class="flex items-center gap-2 mt-3">
+    <img src="company.svg" class="w-6 h-6" alt="People icon" />
+    <a
+      [href]="'https://github.com/' + user()?.company?.replace('@', '')"
+      class="text-sm text-gray-700 hover:text-purple-500 hover:underline"
+      target="_blank"
+      >{{ user()?.company }}</a
+    >
+  </div>
+  } @if (user()?.location) {
+  <div class="flex items-center gap-2 mt-3">
+    <img src="location.svg" class="w-6 h-6" alt="Location icon" />
+    <span class="text-sm text-gray-700">{{ user()?.location }}</span>
+  </div>
+  } @if (user()?.email) {
+  <div class="flex items-center gap-2 mt-3">
+    <img src="email.svg" class="w-6 h-6" alt="Email icon" />
+    <span class="text-sm text-gray-700">{{ user()?.email }}</span>
+  </div>
+  }
+  <div class="flex items-center gap-2 mt-3">
+    <img src="date.svg" class="w-7 h-7" alt="Email icon" />
+    <span class="text-sm text-gray-700">Member since: {{ user()?.created_at | date }}</span>
+  </div>
 </div>
-  

@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from './user.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit{

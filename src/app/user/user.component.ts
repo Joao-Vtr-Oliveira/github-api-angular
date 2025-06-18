@@ -4,10 +4,11 @@ import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { repos, user } from './dummyuser';
 import { AvatarComponent } from "../avatar/avatar.component";
+import { SearchComponent } from "../search/search.component";
 
 @Component({
   selector: 'app-user',
-  imports: [DatePipe, FormsModule, AvatarComponent],
+  imports: [DatePipe, FormsModule, AvatarComponent, SearchComponent],
   templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit {
@@ -24,13 +25,14 @@ export class UserComponent implements OnInit {
     this.showRepos.update((value) => !value);
   }
 
-  userName = model('Peagah-vieira');
+  userName = signal('Peagah-vieira');
 
   ngOnInit(): void {
     this.fetchUserData();
   }
 
-  onClick() {
+  onEvent(username: string) {
+    this.userName.set(username)
     this.fetchUserData();
   }
 

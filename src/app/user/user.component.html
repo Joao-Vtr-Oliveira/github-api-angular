@@ -1,5 +1,5 @@
 <div
-  class="w-full max-w-full sm:max-w-xl md:max-w-3xl mx-auto min-h-[600px] p-6 sm:p-8 border rounded-2xl bg-white shadow-xl text-center"
+  class="w-full max-w-3xl mx-auto p-3 sm:p-8 border rounded-2xl bg-white shadow-xl text-center flex flex-col max-h-none sm:max-h-[90vh]"
 >
   <p class="text-2xl font-bold text-purple-600 mb-4">GitHub Profile</p>
 
@@ -102,12 +102,15 @@
 
   <!-- Repos (condicional) -->
   @if (showRepos() && repos()?.length) {
-  <div class="mt-6 text-left max-h-[400px] overflow-auto px-2 sm:px-0">
+  <div
+    class="mt-6 text-left flex-grow overflow-auto rounded-lg border border-gray-200 shadow-inner
+      max-h-none sm:max-h-[400px] px-1 sm:px-0"
+  >
     <h2 class="text-xl font-bold mb-4 text-purple-600">Public Repositories</h2>
     <ul class="space-y-4">
       @for (repo of repos(); track repo.id) {
       <li
-        class="p-4 border rounded-lg shadow-sm hover:shadow-md transition duration-200"
+        class="p-4 border rounded-lg shadow-sm hover:shadow-md transition duration-200 bg-white"
       >
         <a
           [href]="repo.html_url"

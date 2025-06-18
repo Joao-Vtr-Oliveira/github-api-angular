@@ -1,4 +1,4 @@
-export interface userType {
+export interface UserType {
   avatar_url: string;
   html_url: string;
   repos_url: string;

@@ -11,10 +11,10 @@
   <!-- Repos (condicional) -->
   @if (showRepos() && repos()?.length) {
   <div
-  class="mt-6 text-left flex-grow overflow-auto rounded-lg border border-gray-200 shadow-inner
+  class="mt-6 text-left flex-grow overflow-auto rounded-lg  
     max-h-none sm:max-h-[400px] px-1 sm:px-0"
   >
-    <h2 class="text-xl font-bold mb-4 text-purple-600">Public Repositories</h2>
+    <h2 class="text-xl font-bold mb-4 text-purple-600 text-center">Public Repositories</h2>
     <ul class="space-y-4">
       @for (repo of repos(); track repo.id) {
       <li

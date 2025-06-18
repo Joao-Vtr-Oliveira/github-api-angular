@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { UserType } from './user.modal';
+import { UserType } from './user.model';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 

@@ -11,7 +11,7 @@ export class SearchComponent {
   user = input<UserType | undefined>();
   inputEvent = output<string>();
 
-  userName = model('Peagah-vieira');
+  userName = model('joao-vtr-oliveira');
 
   onEvent() {
     this.inputEvent.emit(this.userName());

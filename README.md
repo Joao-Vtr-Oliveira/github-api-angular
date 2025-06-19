@@ -44,9 +44,7 @@ Teste o projeto [aqui](https://github-api-angular-drab.vercel.app/).
 
 <details> <summary><strong>📦 Como rodar localmente</strong></summary>
 
-bash
-Copy
-Edit
+
 # 1. Clone o repositório
 git clone https://github.com/Joao-Vtr-Oliveira/github-api-angular.git
 

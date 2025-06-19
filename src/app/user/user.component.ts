@@ -6,18 +6,18 @@ import { AvatarComponent } from '../avatar/avatar.component';
 import { SearchComponent } from '../search/search.component';
 import { RepositoriesComponent } from '../repositories/repositories.component';
 import { ExtraDataComponent } from '../extra-data/extra-data.component';
-import { NameBioComponent } from "../name-bio/name-bio.component";
+import { NameBioComponent } from '../name-bio/name-bio.component';
 
 @Component({
 	selector: 'app-user',
 	imports: [
-    FormsModule,
-    AvatarComponent,
-    SearchComponent,
-    RepositoriesComponent,
-    ExtraDataComponent,
-    NameBioComponent
-],
+		FormsModule,
+		AvatarComponent,
+		SearchComponent,
+		RepositoriesComponent,
+		ExtraDataComponent,
+		NameBioComponent,
+	],
 	templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit {
@@ -46,11 +46,21 @@ export class UserComponent implements OnInit {
 	}
 
 	fetchUserData() {
-		this.userService.fetchUser(this.userName()).subscribe(() => {
-			console.log('User:', this.user());
+		this.userService.fetchUser(this.userName()).subscribe({
+			next: (user) => {
+				console.log('user:', user);
+			},
+			error: () => {
+				console.log('Meu erro:', this.userService.readError());
+			},
 		});
-		this.userService.fetchUserRepos(this.userName()).subscribe(() => {
-			console.log('Repos:', this.repos());
+		this.userService.fetchUserRepos(this.userName()).subscribe({
+			next: (repo) => {
+				console.log('repos:', repo);
+			},
+			error: () => {
+				console.log('Meu erro repo:', this.userService.readError());
+			},
 		});
 	}
 }

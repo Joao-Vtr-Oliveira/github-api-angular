@@ -21,7 +21,7 @@ import { NameBioComponent } from '../name-bio/name-bio.component';
 	templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit {
-	private userService = inject(UserService);
+	userService = inject(UserService);
 	user = this.userService.readUser;
 	repos = this.userService.readRepos;
 

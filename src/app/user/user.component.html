@@ -16,14 +16,16 @@
 	<app-search (inputEvent)="onEvent($event)" />
 
 	<!-- Repositories toggle button -->
-	<div class="mt-6">
-		<button
+	@if (!userService.readError()) {
+		<div class="mt-6">
+			<button
 			(click)="toggleRepos()"
 			class="text-sm text-purple-600 hover:underline cursor-pointer focus:outline-none"
-		>
+			>
 			{{ showRepos() ? "Hide" : "Show" }} Repositories
 		</button>
 	</div>
+}
 
 	<!-- Repositories if showRepo is true and repo array is > 0 -->
 	@if (showRepos() && repos()?.length) {

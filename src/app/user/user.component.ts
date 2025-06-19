@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   // user = signal(user);
   // repos = signal(repos);
 
-  userName = signal('Peagah-vieira');
+  userName = signal('joao-vtr-oliveira');
 
     showRepos = signal(false);
 

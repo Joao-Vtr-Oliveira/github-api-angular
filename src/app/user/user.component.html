@@ -6,15 +6,8 @@
 	<!-- User profile picture -->
 	<app-avatar [user]="user()" />
 
-	<a
-		[href]="user()?.html_url"
-		class="text-lg font-semibold text-gray-800 hover:text-purple-600 hover:underline block mb-2"
-		target="_blank"
-	>
-		{{ user()?.login }}
-	</a>
-
-	<p class="text-sm text-gray-600 italic mb-4">{{ user()?.bio }}</p>
+	<!-- User name & bio -->
+	<app-name-bio [user]="user()" />
 
 	<!-- Extra data -->
 	<app-extra-data [user]="user()" />

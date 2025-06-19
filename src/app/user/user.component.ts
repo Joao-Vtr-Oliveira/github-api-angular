@@ -6,16 +6,18 @@ import { AvatarComponent } from '../avatar/avatar.component';
 import { SearchComponent } from '../search/search.component';
 import { RepositoriesComponent } from '../repositories/repositories.component';
 import { ExtraDataComponent } from '../extra-data/extra-data.component';
+import { NameBioComponent } from "../name-bio/name-bio.component";
 
 @Component({
 	selector: 'app-user',
 	imports: [
-		FormsModule,
-		AvatarComponent,
-		SearchComponent,
-		RepositoriesComponent,
-		ExtraDataComponent,
-	],
+    FormsModule,
+    AvatarComponent,
+    SearchComponent,
+    RepositoriesComponent,
+    ExtraDataComponent,
+    NameBioComponent
+],
 	templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit {

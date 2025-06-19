@@ -39,3 +39,24 @@ Teste o projeto [aqui](https://github-api-angular-drab.vercel.app/).
   <img src='https://github.com/user-attachments/assets/41a1bf9b-353f-4e4a-aad0-146c3fb77a27' alt='Tela em caso de erro' />
   <figcaption>Tela em caso de erros</figcaption>
 </figure>
+
+---
+
+<details> <summary><strong>📦 Como rodar localmente</strong></summary>
+
+bash
+Copy
+Edit
+# 1. Clone o repositório
+git clone https://github.com/Joao-Vtr-Oliveira/github-api-angular.git
+
+cd github-api-angular
+
+# 2. Instale as dependências
+npm install
+
+# 3. Rode o servidor de desenvolvimento
+ng serve
+
+# 4. Acesse em http://localhost:4200
+</details>

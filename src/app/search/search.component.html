@@ -1,15 +1,15 @@
-  <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-3">
-    <input
-      type="text"
-      [(ngModel)]="userName"
-      placeholder="Enter username"
-      class="border border-gray-300 rounded-lg px-4 py-2 w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-purple-400"
-      (keyup.enter)="onEvent()"
-    />
-    <button
-      (click)="onEvent()"
-      class="px-6 py-2 rounded-lg bg-purple-500 text-white hover:bg-purple-600 transition-colors w-full sm:w-auto"
-    >
-      Search
-    </button>
-  </div>
+<div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-3">
+	<input
+		type="text"
+		[(ngModel)]="userName"
+		placeholder="Enter username"
+		class="border border-gray-300 rounded-lg px-4 py-2 w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-purple-400"
+		(keyup.enter)="onEvent()"
+	/>
+	<button
+		(click)="onEvent()"
+		class="px-6 py-2 rounded-lg bg-purple-500 text-white hover:bg-purple-600 transition-colors w-full sm:w-auto"
+	>
+		Search
+	</button>
+</div>

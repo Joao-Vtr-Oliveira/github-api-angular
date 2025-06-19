@@ -1,29 +1,31 @@
 @if (repos()?.length) {
-  <div class="text-left overflow-auto rounded-lg px-1 sm:px-0">
-    <h2 class="text-xl font-bold mb-4 text-purple-600 text-center">Public Repositories</h2>
-    <ul class="space-y-4">
-      @for (repo of repos(); track repo.id) {
-      <li
-        class="p-4 border rounded-lg shadow-sm hover:shadow-md transition duration-200 bg-white"
-      >
-        <a
-          [href]="repo.html_url"
-          target="_blank"
-          class="text-lg font-semibold text-gray-800 hover:text-purple-600 hover:underline"
-        >
-          {{ repo.name }}
-        </a>
-        @if (repo.description) {
-        <p class="text-sm text-gray-600 italic mt-1">{{ repo.description }}</p>
-        } @if (repo.language) {
-        <div class="text-xs text-gray-500 mt-2 flex gap-4 flex-wrap">
-          <span>Language: {{ repo.language }}</span>
-          <span>★ {{ repo.stargazers_count }}</span>
-          <span>🍴 {{ repo.forks_count }}</span>
-        </div>
-        }
-      </li>
-      }
-    </ul>
-  </div>
+<div class="text-left overflow-auto rounded-lg px-1 sm:px-0">
+	<h2 class="text-xl font-bold mb-4 text-purple-600 text-center">
+		Public Repositories
+	</h2>
+	<ul class="space-y-4">
+		@for (repo of repos(); track repo.id) {
+		<li
+			class="p-4 border rounded-lg shadow-sm hover:shadow-md transition duration-200 bg-white"
+		>
+			<a
+				[href]="repo.html_url"
+				target="_blank"
+				class="text-lg font-semibold text-gray-800 hover:text-purple-600 hover:underline"
+			>
+				{{ repo.name }}
+			</a>
+			@if (repo.description) {
+			<p class="text-sm text-gray-600 italic mt-1">{{ repo.description }}</p>
+			} @if (repo.language) {
+			<div class="text-xs text-gray-500 mt-2 flex gap-4 flex-wrap">
+				<span>Language: {{ repo.language }}</span>
+				<span>★ {{ repo.stargazers_count }}</span>
+				<span>🍴 {{ repo.forks_count }}</span>
+			</div>
+			}
+		</li>
+		}
+	</ul>
+</div>
 }

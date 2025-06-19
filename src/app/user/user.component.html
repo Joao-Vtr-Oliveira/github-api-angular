@@ -1,39 +1,41 @@
 <div
-  class="w-full max-w-3xl mx-auto my-8 p-3 sm:p-8 border rounded-2xl bg-white shadow-xl text-center flex flex-col max-h-screen md:max-h-[90vh] overflow-hidden"
+	class="w-full max-w-3xl mx-auto my-8 p-3 sm:p-8 border rounded-2xl bg-white shadow-xl text-center flex flex-col max-h-screen md:max-h-[90vh] overflow-hidden"
 >
-  <p class="text-2xl font-bold text-purple-600 mb-4">GitHub Profile</p>
+	<p class="text-2xl font-bold text-purple-600 mb-4">GitHub Profile</p>
 
-  <app-avatar [user]="user()" />
+	<!-- User profile picture -->
+	<app-avatar [user]="user()" />
 
-  <a
-    [href]="user()?.html_url"
-    class="text-lg font-semibold text-gray-800 hover:text-purple-600 hover:underline block mb-2"
-    target="_blank"
-  >
-    {{ user()?.login }}
-  </a>
+	<a
+		[href]="user()?.html_url"
+		class="text-lg font-semibold text-gray-800 hover:text-purple-600 hover:underline block mb-2"
+		target="_blank"
+	>
+		{{ user()?.login }}
+	</a>
 
-  <p class="text-sm text-gray-600 italic mb-4">{{ user()?.bio }}</p>
+	<p class="text-sm text-gray-600 italic mb-4">{{ user()?.bio }}</p>
 
-  <!-- Dados extras -->
-  <app-extra-data [user]="user()"/>
+	<!-- Extra data -->
+	<app-extra-data [user]="user()" />
 
-  <app-search (inputEvent)="onEvent($event)" />
+	<!-- Input and search button -->
+	<app-search (inputEvent)="onEvent($event)" />
 
-  <!-- Botão toggle -->
-  <div class="mt-6">
-    <button
-      (click)="toggleRepos()"
-      class="text-sm text-purple-600 hover:underline cursor-pointer focus:outline-none"
-    >
-      {{ showRepos() ? "Hide" : "Show" }} Repositories
-    </button>
-  </div>
+	<!-- Repositories toggle button -->
+	<div class="mt-6">
+		<button
+			(click)="toggleRepos()"
+			class="text-sm text-purple-600 hover:underline cursor-pointer focus:outline-none"
+		>
+			{{ showRepos() ? "Hide" : "Show" }} Repositories
+		</button>
+	</div>
 
-  <!-- Repositórios ocupando espaço restante só quando visível -->
-  @if (showRepos() && repos()?.length) {
-    <div class="flex-1 min-h-0 overflow-auto mt-4">
-      <app-repositories [repos]="repos()" />
-    </div>
-  }
+	<!-- Repositories if showRepo is true and repo array is > 0 -->
+	@if (showRepos() && repos()?.length) {
+	<div class="flex-1 min-h-0 overflow-auto mt-4">
+		<app-repositories [repos]="repos()" />
+	</div>
+	}
 </div>

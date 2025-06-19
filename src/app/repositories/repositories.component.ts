@@ -3,16 +3,15 @@ import { UserType } from '../user/user.model';
 import { RepoType } from '../user/repo.model';
 
 @Component({
-  selector: 'app-repositories',
-  imports: [],
-  templateUrl: './repositories.component.html',
+	selector: 'app-repositories',
+	imports: [],
+	templateUrl: './repositories.component.html',
 })
 export class RepositoriesComponent {
-  repos = input<RepoType[] | undefined>();
-  showRepos = signal(false);
+	repos = input<RepoType[] | undefined>();
+	showRepos = signal(false);
 
-
-  toggleRepos() {
-    this.showRepos.update((value) => !value);
-  }
+	toggleRepos() {
+		this.showRepos.update((value) => !value);
+	}
 }

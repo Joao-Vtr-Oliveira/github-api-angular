@@ -1,38 +1,38 @@
 <div class="flex flex-wrap justify-center items-center gap-3 text-gray-700">
-    <div class="flex items-center gap-2">
-      <img src="followers.svg" class="w-5 h-5" />
-      <span class="text-sm">{{ user()?.followers }} Followers</span>
-      ·
-      <span class="text-sm">{{ user()?.following }} Following</span>
-    </div>
-  </div>
+	<div class="flex items-center gap-2">
+		<img src="followers.svg" class="w-5 h-5" />
+		<span class="text-sm">{{ user()?.followers }} Followers</span>
+		·
+		<span class="text-sm">{{ user()?.following }} Following</span>
+	</div>
+</div>
 
-  @if (user()?.company) {
-  <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
-    <img src="company.svg" class="w-5 h-5" />
-    <a
-      [href]="'https://github.com/' + user()?.company?.replace('@', '')"
-      class="text-sm hover:text-purple-600 hover:underline"
-      target="_blank"
-    >
-      {{ user()?.company }}
-    </a>
-  </div>
-  } @if (user()?.location) {
-  <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
-    <img src="location.svg" class="w-5 h-5" />
-    <span class="text-sm">{{ user()?.location }}</span>
-  </div>
-  } @if (user()?.email) {
-  <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
-    <img src="email.svg" class="w-5 h-5" />
-    <span class="text-sm">{{ user()?.email }}</span>
-  </div>
-  }
+@if (user()?.company) {
+<div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
+	<img src="company.svg" class="w-5 h-5" />
+	<a
+		[href]="'https://github.com/' + user()?.company?.replace('@', '')"
+		class="text-sm hover:text-purple-600 hover:underline"
+		target="_blank"
+	>
+		{{ user()?.company }}
+	</a>
+</div>
+} @if (user()?.location) {
+<div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
+	<img src="location.svg" class="w-5 h-5" />
+	<span class="text-sm">{{ user()?.location }}</span>
+</div>
+} @if (user()?.email) {
+<div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
+	<img src="email.svg" class="w-5 h-5" />
+	<span class="text-sm">{{ user()?.email }}</span>
+</div>
+}
 
-  <div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
-    <img src="date.svg" class="w-5 h-5" />
-    <span class="text-sm">
-      Member since: {{ user()?.created_at | date : "mediumDate" }}
-    </span>
-  </div>
+<div class="flex justify-center items-center gap-2 mt-3 text-gray-700">
+	<img src="date.svg" class="w-5 h-5" />
+	<span class="text-sm">
+		Member since: {{ user()?.created_at | date : "mediumDate" }}
+	</span>
+</div>

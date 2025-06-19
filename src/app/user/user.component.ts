@@ -1,4 +1,11 @@
-import { Component, inject, model, OnInit, signal } from '@angular/core';
+import {
+	Component,
+	inject,
+	model,
+	OnInit,
+	OnDestroy,
+	signal,
+} from '@angular/core';
 import { UserService } from './user.service';
 import { FormsModule } from '@angular/forms';
 import { repos, user } from './dummyuser';
@@ -7,6 +14,8 @@ import { SearchComponent } from '../search/search.component';
 import { RepositoriesComponent } from '../repositories/repositories.component';
 import { ExtraDataComponent } from '../extra-data/extra-data.component';
 import { NameBioComponent } from '../name-bio/name-bio.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-user',
@@ -20,7 +29,7 @@ import { NameBioComponent } from '../name-bio/name-bio.component';
 	],
 	templateUrl: './user.component.html',
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
 	userService = inject(UserService);
 	user = this.userService.readUser;
 	repos = this.userService.readRepos;
@@ -28,21 +37,37 @@ export class UserComponent implements OnInit {
 	// user = signal(user);
 	// repos = signal(repos);
 
-	userName = signal('joao-vtr-oliveira');
+	// userName = signal('joao-vtr-oliveira');
+	private route = inject(ActivatedRoute);
+	private router = inject(Router);
+
+	private routeSub?: Subscription;
 
 	showRepos = signal(false);
 
 	toggleRepos() {
 		this.showRepos.update((value) => !value);
 	}
+	userName = signal<string>('');
 
 	ngOnInit(): void {
-		this.fetchUserData();
+		this.routeSub = this.route.paramMap.subscribe((params) => {
+			const username = params.get('username');
+			if (username) {
+				this.userName.set(username);
+				this.fetchUserData();
+			}
+		});
+	}
+
+	ngOnDestroy(): void {
+		this.routeSub?.unsubscribe();
 	}
 
 	onEvent(username: string) {
 		this.userName.set(username);
-		this.fetchUserData();
+		// this.fetchUserData();
+		this.router.navigate(['/user', username]);
 	}
 
 	fetchUserData() {

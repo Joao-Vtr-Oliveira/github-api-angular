@@ -1,6 +1,5 @@
 import { Component, inject, model, OnInit, signal } from '@angular/core';
 import { UserService } from './user.service';
-import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { repos, user } from './dummyuser';
 import { AvatarComponent } from "../avatar/avatar.component";
@@ -10,7 +9,7 @@ import { ExtraDataComponent } from "../extra-data/extra-data.component";
 
 @Component({
   selector: 'app-user',
-  imports: [DatePipe, FormsModule, AvatarComponent, SearchComponent, RepositoriesComponent, ExtraDataComponent],
+  imports: [FormsModule, AvatarComponent, SearchComponent, RepositoriesComponent, ExtraDataComponent],
   templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit {

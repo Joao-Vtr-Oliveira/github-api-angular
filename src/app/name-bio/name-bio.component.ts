@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { UserType } from '../user/user.model';
+import { UserService } from '../user/user.service';
 
 @Component({
 	selector: 'app-name-bio',
@@ -8,4 +9,5 @@ import { UserType } from '../user/user.model';
 })
 export class NameBioComponent {
 	user = input<UserType | undefined>();
+  userService = inject(UserService);
 }

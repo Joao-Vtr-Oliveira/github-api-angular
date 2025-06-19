@@ -1,3 +1,28 @@
+import { UserType } from './user.model';
+
+export const emptyUser: UserType = {
+	avatar_url: '',
+	bio: '',
+	company: '',
+	created_at: '',
+	email: '',
+	followers: 0,
+	following: 0,
+	hirable: false,
+	html_url: '',
+	location: '',
+	login: '',
+	name: '',
+	repos_url: ''
+}
+
+
+
+
+
+
+
+
 export const user = {
 	login: 'Peagah-Vieira',
 	id: 105545343,

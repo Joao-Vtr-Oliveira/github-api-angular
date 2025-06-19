@@ -3,6 +3,7 @@ import { UserType } from './user.model';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap, throwError } from 'rxjs';
 import { RepoType } from './repo.model';
+import { emptyUser } from './dummyuser';
 
 @Injectable({
 	providedIn: 'root',
@@ -33,6 +34,7 @@ export class UserService {
 					const message = this.handleHttpError(error);
 					this.error.set(message);
 					this.loading.set(false);
+					this.user.set(emptyUser);
 					return throwError(() => new Error(message));
 				})
 			);
@@ -53,6 +55,7 @@ export class UserService {
 					const message = this.handleHttpError(error);
 					this.error.set(message);
 					this.loading.set(false);
+					this.repos.set([]);
 					return throwError(() => new Error(message));
 				})
 			);

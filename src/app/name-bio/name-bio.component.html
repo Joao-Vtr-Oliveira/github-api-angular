@@ -8,8 +8,10 @@
 </a>
 
 <p class="text-sm text-gray-600 italic mb-4">{{ user()?.bio }}</p>
-} @else {
-<p class="text-lg font-semibold text-gray-800 block mb-2">
-	Any user was selected.
+} @if (userService.readLoading() && !userService.readError()) {
+<p class="text-lg font-semibold text-gray-800 block mb-2">Loading...</p>
+}@else if (userService.readError()) {
+<p class="text-lg font-semibold text-red-600 italic block mb-2">
+	{{ userService.readError() }}
 </p>
 }

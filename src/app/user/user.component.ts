@@ -6,10 +6,11 @@ import { repos, user } from './dummyuser';
 import { AvatarComponent } from "../avatar/avatar.component";
 import { SearchComponent } from "../search/search.component";
 import { RepositoriesComponent } from "../repositories/repositories.component";
+import { ExtraDataComponent } from "../extra-data/extra-data.component";
 
 @Component({
   selector: 'app-user',
-  imports: [DatePipe, FormsModule, AvatarComponent, SearchComponent, RepositoriesComponent],
+  imports: [DatePipe, FormsModule, AvatarComponent, SearchComponent, RepositoriesComponent, ExtraDataComponent],
   templateUrl: './user.component.html',
 })
 export class UserComponent implements OnInit {

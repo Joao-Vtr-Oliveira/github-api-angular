@@ -34,10 +34,6 @@ export class UserComponent implements OnInit, OnDestroy {
 	user = this.userService.readUser;
 	repos = this.userService.readRepos;
 
-	// user = signal(user);
-	// repos = signal(repos);
-
-	// userName = signal('joao-vtr-oliveira');
 	private route = inject(ActivatedRoute);
 	private router = inject(Router);
 
@@ -66,14 +62,12 @@ export class UserComponent implements OnInit, OnDestroy {
 
 	onEvent(username: string) {
 		this.userName.set(username);
-		// this.fetchUserData();
 		this.router.navigate(['/user', username]);
 	}
 
 	fetchUserData() {
 		this.userService.fetchUser(this.userName()).subscribe({
 			next: (user) => {
-				console.log('user:', user);
 			},
 			error: () => {
 				console.log('Meu erro:', this.userService.readError());
@@ -81,7 +75,6 @@ export class UserComponent implements OnInit, OnDestroy {
 		});
 		this.userService.fetchUserRepos(this.userName()).subscribe({
 			next: (repo) => {
-				console.log('repos:', repo);
 			},
 			error: () => {
 				console.log('Meu erro repo:', this.userService.readError());

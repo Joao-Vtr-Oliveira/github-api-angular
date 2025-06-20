@@ -5,6 +5,7 @@ import {
 	OnInit,
 	OnDestroy,
 	signal,
+	DestroyRef,
 } from '@angular/core';
 import { UserService } from './user.service';
 import { FormsModule } from '@angular/forms';
@@ -38,6 +39,7 @@ export class UserComponent implements OnInit, OnDestroy {
 	private router = inject(Router);
 
 	private routeSub?: Subscription;
+	private destoyRef = inject(DestroyRef);
 
 	showRepos = signal(false);
 
@@ -66,19 +68,24 @@ export class UserComponent implements OnInit, OnDestroy {
 	}
 
 	fetchUserData() {
-		this.userService.fetchUser(this.userName()).subscribe({
+		const subscriptionUser = this.userService.fetchUser(this.userName()).subscribe({
 			next: (user) => {
 			},
 			error: () => {
 				console.log('Meu erro:', this.userService.readError());
 			},
 		});
-		this.userService.fetchUserRepos(this.userName()).subscribe({
+		const subscriptionRepos = this.userService.fetchUserRepos(this.userName()).subscribe({
 			next: (repo) => {
 			},
 			error: () => {
 				console.log('Meu erro repo:', this.userService.readError());
 			},
 		});
+
+		this.destoyRef.onDestroy(() => {
+			subscriptionUser.unsubscribe();
+			subscriptionRepos.unsubscribe();
+		})
 	}
 }

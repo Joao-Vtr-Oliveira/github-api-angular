@@ -26,17 +26,17 @@ Teste o projeto [aqui](https://github-api-angular-drab.vercel.app/).
 <p align="center" style='font-size: 25px; text-decoration: underline; font-weight: bold'>Tela:</p>
 
 <figure>
-  <img src='https://github.com/user-attachments/assets/ada8c395-4fb2-46d9-943a-23866891b9e1' alt='Tela com funcionamento do route' />
+  <img src='https://github.com/user-attachments/assets/bd9eaaa1-c3fb-41d9-97ca-8e9498ac5de7' alt='Tela com funcionamento do route' />
   <figcaption>Tela com funcionamento do route</figcaption>
 </figure>
 
 <figure>
-  <img src='https://github.com/user-attachments/assets/ec87c2e7-6418-489e-80f7-436c4ed94a67' alt='Tela mostrando os repositórios' />
+  <img src='https://github.com/user-attachments/assets/c1c1aca2-c9bf-4267-893f-662142092870' alt='Tela mostrando os repositórios' />
   <figcaption>Tela mostrando os repositórios</figcaption>
 </figure>
 
 <figure>
-  <img src='https://github.com/user-attachments/assets/41a1bf9b-353f-4e4a-aad0-146c3fb77a27' alt='Tela em caso de erro' />
+  <img src='https://github.com/user-attachments/assets/1cf47d9d-06be-43db-bcff-6849c43e1388' alt='Tela em caso de erro' />
   <figcaption>Tela em caso de erros</figcaption>
 </figure>
 

@@ -1,4 +1,4 @@
-# Github API - Angular!
+# Github API - Angular
 
 
 <div align=center>

@@ -3,8 +3,8 @@
 
 <div align=center>
   <p style='font-size: 25px; text-decoration: underline; font-weight: bold'>Ferramentas:</p>
-  <a href="https://github.com/Joao-Vtr-Oliveira/todo-list-login">
-    <img src="https://skillicons.dev/icons?i=ts,angular,tailwind" />
+  <a href="https://github.com/Joao-Vtr-Oliveira/github-api-angular">
+    <img src="https://skillicons.dev/icons?i=ts,angular,tailwind,jest" />
   </a>
 </div>
 
@@ -17,6 +17,8 @@ Um projeto com funcionamento muito simples. Serve para fazer requisições de pe
 Foi criado utilizando: Angular, TypeScript, TailwindCSS
 
 Foi feito utilizando Signals, Route, Services...
+
+E foi implementado testes para todos os componenetes.
 
 Teste o projeto [aqui](https://github-api-angular-drab.vercel.app/).
 

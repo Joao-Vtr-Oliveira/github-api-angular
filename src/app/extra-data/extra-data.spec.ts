@@ -7,6 +7,7 @@ import {
 
 import { ExtraDataComponent } from './extra-data.component';
 import { dummy } from '../../utils/dummyUserTest';
+import { UserType } from '../user/user.model';
 
 describe('TestComponent', () => {
 	let component: ExtraDataComponent;
@@ -44,5 +45,17 @@ describe('TestComponent', () => {
 			'[data-testid="spanFollowing-extra-data"]'
 		);
 		expect(spanFollowing.textContent).toContain('8');
+	}));
+
+		it('should have company name', fakeAsync(() => {
+		const newDummy: UserType = { ...dummy, company: '@google' };
+		fixture.componentRef.setInput('user', newDummy);
+		tick();
+		fixture.detectChanges();
+
+		const anchorCompany: HTMLAnchorElement = fixture.nativeElement.querySelector(
+			'[data-testid="anchorCompany-extra-data"]'
+		);
+		expect(anchorCompany.textContent).toContain(newDummy.company?.replace('@', ''));
 	}));
 });

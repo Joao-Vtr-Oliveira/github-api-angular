@@ -25,7 +25,7 @@ describe('TestComponent', () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
-	it('should use user avatar', fakeAsync(() => {
+	it('should have 10 followers', fakeAsync(() => {
 		const dummy: UserType = {
 			name: 'João Vitor',
 			login: 'joao-vtr-oliveira',
@@ -47,5 +47,28 @@ describe('TestComponent', () => {
 
 		const spanFollowers: HTMLSpanElement = fixture.nativeElement.querySelector('[data-testid="spanFollowers-extra-data"]');
 		expect(spanFollowers.textContent).toContain('10');
+	}));
+	it('should have 8 following', fakeAsync(() => {
+		const dummy: UserType = {
+			name: 'João Vitor',
+			login: 'joao-vtr-oliveira',
+			avatar_url: 'https://example.com/avatar.jpg',
+			created_at: new Date().toISOString(),
+			html_url: '',
+			repos_url: '',
+			company: null,
+			location: null,
+			email: null,
+			hirable: false,
+			bio: '',
+			followers: 10,
+			following: 8,
+		};
+		fixture.componentRef.setInput('user', dummy);
+		tick();
+		fixture.detectChanges();
+
+		const spanFollowing: HTMLSpanElement = fixture.nativeElement.querySelector('[data-testid="spanFollowing-extra-data"]');
+		expect(spanFollowing.textContent).toContain('8');
 	}));
 });

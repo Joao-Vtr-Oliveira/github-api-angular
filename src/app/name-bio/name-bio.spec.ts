@@ -16,7 +16,7 @@ class fakeUserServiceWithError {
 		return 'User not found';
 	}
 	readLoading() {
-		return false; // ou true, conforme o cenário que quiser simular
+		return false;
 	}
 	getUser() {
 		throw new Error('Erro simulado');

@@ -31,7 +31,7 @@ describe('TestComponent', () => {
 		fixture.detectChanges();
 
 		const img: HTMLImageElement = fixture.nativeElement.querySelector('img');
-		expect(img.src).toContain('https://example.com/avatar.jpg');
+		expect(img.src).toContain(dummy.avatar_url);
 	}));
 	it('should use default avatar when user is undefined', () => {
 		fixture.componentRef.setInput('user', undefined);

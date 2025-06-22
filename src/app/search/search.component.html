@@ -2,6 +2,7 @@
 	<input
 		type="text"
 		[(ngModel)]="userNameModel"
+		data-testid="inputText-searchComponent"
 		placeholder="Enter username"
 		class="border border-gray-300 rounded-lg px-4 py-2 w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-purple-400"
 		(keyup.enter)="onEvent()"

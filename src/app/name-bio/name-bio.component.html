@@ -3,15 +3,26 @@
 	[href]="user()?.html_url"
 	class="text-lg font-semibold text-gray-800 hover:text-purple-600 hover:underline block mb-2"
 	target="_blank"
+	data-testid="anchorLogin-name-bio"
 >
 	{{ user()?.login }}
 </a>
 
-<p class="text-sm text-gray-600 italic mb-4">{{ user()?.bio }}</p>
+<p data-testid="pBio-name-bio" class="text-sm text-gray-600 italic mb-4">
+	{{ user()?.bio }}
+</p>
 } @if (userService.readLoading() && !userService.readError()) {
-<p class="text-lg font-semibold text-gray-800 block mb-2">Loading...</p>
+<p
+	data-testid="pLoading-name-bio"
+	class="text-lg font-semibold text-gray-800 block mb-2"
+>
+	Loading...
+</p>
 }@else if (userService.readError()) {
-<p class="text-lg font-semibold text-red-600 italic block mb-2">
+<p
+	data-testid="pError-name-bio"
+	class="text-lg font-semibold text-red-600 italic block mb-2"
+>
 	{{ userService.readError() }}
 </p>
 }

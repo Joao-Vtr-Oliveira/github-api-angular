@@ -10,6 +10,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { UserType } from '../user/user.model';
 import { UserService } from '../user/user.service';
+import { dummy } from '../../utils/dummyUserTest';
 
 class fakeUserServiceWithError {
 	readError() {
@@ -50,21 +51,6 @@ describe('TestComponent', () => {
 		expect(component).toBeTruthy();
 	});
 	it('should have dummy login on anchor', fakeAsync(() => {
-		const dummy: UserType = {
-			name: 'João Vitor',
-			login: 'joao-vtr-oliveira',
-			avatar_url: 'https://example.com/avatar.jpg',
-			created_at: new Date().toISOString(),
-			html_url: '',
-			repos_url: '',
-			company: null,
-			location: null,
-			email: null,
-			hirable: false,
-			bio: '',
-			followers: 10,
-			following: 8,
-		};
 		fixture.componentRef.setInput('user', dummy);
 		tick();
 		fixture.detectChanges();
@@ -73,6 +59,18 @@ describe('TestComponent', () => {
 			'[data-testid="anchorLogin-name-bio"]'
 		);
 		expect(anchorLogin.textContent).toContain(dummy.login);
+	}));
+
+	it('should have dummy bio', fakeAsync(() => {
+		const newDummy = { ...dummy, bio: 'This is a dummy bio' };
+		fixture.componentRef.setInput('user', newDummy);
+		tick();
+		fixture.detectChanges();
+
+		const pBio: HTMLParagraphElement = fixture.nativeElement.querySelector(
+			'[data-testid="pBio-name-bio"]'
+		);
+		expect(pBio.textContent).toContain(newDummy.bio);
 	}));
 	it('should return an error if user is undefined', fakeAsync(() => {
 		expect(service.readError()).toEqual('User not found');

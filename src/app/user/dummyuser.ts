@@ -17,12 +17,6 @@ export const emptyUser: UserType = {
 }
 
 
-
-
-
-
-
-
 export const user = {
 	login: 'Peagah-Vieira',
 	id: 105545343,

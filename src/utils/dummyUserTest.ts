@@ -1,3 +1,4 @@
+import { RepoType } from '../app/user/repo.model';
 import { UserType } from '../app/user/user.model';
 
 export const dummy: UserType = {
@@ -15,3 +16,30 @@ export const dummy: UserType = {
 	followers: 10,
 	following: 8,
 };
+
+export const dummyRepos: RepoType[] = [
+	{
+		id: 1,
+		name: 'dummy-repo-1',
+		html_url: '',
+		stargazers_count: 3,
+		commits_url: '',
+		forks_count: 2,
+	},
+	{
+		id: 2,
+		name: 'dummy-repo-2',
+		html_url: '',
+		stargazers_count: 5,
+		commits_url: '',
+		forks_count: 0,
+	},
+	{
+		id: 3,
+		name: 'dummy-repo-3',
+		html_url: '',
+		stargazers_count: 8,
+		commits_url: '',
+		forks_count: 0,
+	},
+];

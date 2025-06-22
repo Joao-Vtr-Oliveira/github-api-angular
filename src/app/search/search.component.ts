@@ -1,14 +1,10 @@
 import {
 	Component,
-	inject,
 	input,
 	output,
-	OnChanges,
-	SimpleChanges,
 	effect,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-search',
@@ -18,15 +14,8 @@ import { Router } from '@angular/router';
 export class SearchComponent {
 	userName = input<string | undefined>();
 	inputEvent = output<string>();
-	private router = inject(Router);
 
 	userNameModel = '';
-
-	// ngOnChanges(changes: SimpleChanges) {
-	// 	if (changes['userName']) {
-	// 		this.userNameModel = changes['userName'].currentValue ?? '';
-	// 	}
-	// }
 
 	constructor() {
 		effect(() => {

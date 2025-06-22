@@ -36,6 +36,7 @@ describe('TestComponent', () => {
 			);
 		expect(liDebugItens.length).toBe(dummyRepos.length);
 	}));
+
 	it('li component should have the same name of the dummy repo', fakeAsync(() => {
 		fixture.componentRef.setInput('repos', dummyRepos);
 		tick();
@@ -49,6 +50,22 @@ describe('TestComponent', () => {
 			const repoNameEl = li.querySelector('[data-testid="repoName"]');
 			expect(repoNameEl).not.toBeNull();
 			expect(repoNameEl!.textContent).toContain(dummyRepos[index].name);
+		});
+	}));
+
+	it('li component should have the same number of stars as the dummy', fakeAsync(() => {
+		fixture.componentRef.setInput('repos', dummyRepos);
+		tick();
+		fixture.detectChanges();
+		
+		const liDebugItens: HTMLLIElement[] =
+			fixture.nativeElement.querySelectorAll(
+				'[data-testid="liItem-repositories-component"]'
+			);
+		liDebugItens.forEach((li, index) => {
+			const repoStarsEl = li.querySelector('[data-testid="repoStars"]');
+			expect(repoStarsEl).not.toBeNull();
+			expect(repoStarsEl!.textContent).toContain(String(dummyRepos[index].stargazers_count));
 		});
 	}));
 });

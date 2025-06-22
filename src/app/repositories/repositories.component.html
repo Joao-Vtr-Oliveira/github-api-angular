@@ -20,9 +20,9 @@
 			@if (repo.description) {
 			<p class="text-sm text-gray-600 italic mt-1">{{ repo.description }}</p>
 			} @if (repo.language) {
-			<div class="text-xs text-gray-500 mt-2 flex gap-4 flex-wrap">
+			<div data-testid="itemDiv" class="text-xs text-gray-500 mt-2 flex gap-4 flex-wrap">
 				<span>Language: {{ repo.language }}</span>
-				<span>★ {{ repo.stargazers_count }}</span>
+				<span data-testid="repoStars">★ {{ repo.stargazers_count }}</span>
 				<span>🍴 {{ repo.forks_count }}</span>
 			</div>
 			}

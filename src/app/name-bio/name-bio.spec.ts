@@ -8,7 +8,6 @@ import {
 import { NameBioComponent } from './name-bio.component';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { UserType } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { dummy } from '../../utils/dummyUserTest';
 

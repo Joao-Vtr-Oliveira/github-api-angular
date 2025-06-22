@@ -6,7 +6,7 @@ import {
 } from '@angular/core/testing';
 
 import { AvatarComponent } from './avatar.component';
-import { UserType } from '../user/user.model';
+import { dummy } from '../../utils/dummyUserTest';
 
 describe('TestComponent', () => {
 	let component: AvatarComponent;
@@ -26,21 +26,6 @@ describe('TestComponent', () => {
 		expect(component).toBeTruthy();
 	});
 	it('should use user avatar', fakeAsync(() => {
-		const dummy: UserType = {
-			name: 'João Vitor',
-			login: 'joao-vtr-oliveira',
-			avatar_url: 'https://example.com/avatar.jpg',
-			created_at: new Date().toISOString(),
-			html_url: '',
-			repos_url: '',
-			company: null,
-			location: null,
-			email: null,
-			hirable: false,
-			bio: '',
-			followers: 0,
-			following: 0,
-		};
 		fixture.componentRef.setInput('user', dummy);
 		tick();
 		fixture.detectChanges();

@@ -47,26 +47,42 @@ describe('TestComponent', () => {
 		expect(spanFollowing.textContent).toContain('8');
 	}));
 
-		it('should have company name', fakeAsync(() => {
+	it('should have company name', fakeAsync(() => {
 		const newDummy: UserType = { ...dummy, company: '@google' };
 		fixture.componentRef.setInput('user', newDummy);
 		tick();
 		fixture.detectChanges();
 
-		const anchorCompany: HTMLAnchorElement = fixture.nativeElement.querySelector(
-			'[data-testid="anchorCompany-extra-data"]'
+		const anchorCompany: HTMLAnchorElement =
+			fixture.nativeElement.querySelector(
+				'[data-testid="anchorCompany-extra-data"]'
+			);
+		expect(anchorCompany.textContent).toContain(
+			newDummy.company?.replace('@', '')
 		);
-		expect(anchorCompany.textContent).toContain(newDummy.company?.replace('@', ''));
 	}));
-	
+
 	it('company anchor should be null', fakeAsync(() => {
 		fixture.componentRef.setInput('user', dummy);
 		tick();
 		fixture.detectChanges();
 
-		const anchorCompany: HTMLAnchorElement | null = fixture.nativeElement.querySelector(
-			'[data-testid="anchorCompany-extra-data"]'
+		const anchorCompany: HTMLAnchorElement | null =
+			fixture.nativeElement.querySelector(
+				'[data-testid="anchorCompany-extra-data"]'
+			);
+		expect(anchorCompany).toBe(null);
+	}));
+
+	it('should test the date pipe', fakeAsync(() => {
+		const newDummy: UserType = { ...dummy, created_at: '2023-01-01' };
+		fixture.componentRef.setInput('user', newDummy);
+		tick();
+		fixture.detectChanges();
+
+		const spanCreatedAt: HTMLSpanElement = fixture.nativeElement.querySelector(
+			'[data-testid="spanCreatedAt-extra-data"]'
 		);
-		expect(anchorCompany).toBe(null)
+		expect(spanCreatedAt.textContent).toContain('Jan 1, 2023');
 	}));
 });

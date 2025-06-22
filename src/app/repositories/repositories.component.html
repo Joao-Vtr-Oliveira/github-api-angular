@@ -7,11 +7,13 @@
 		@for (repo of repos(); track repo.id) {
 		<li
 			class="p-4 border rounded-lg shadow-sm hover:shadow-md transition duration-200 bg-white"
+			data-testid="liItem-repositories-component"
 		>
 			<a
 				[href]="repo.html_url"
 				target="_blank"
 				class="text-lg font-semibold text-gray-800 hover:text-purple-600 hover:underline"
+				data-testid="repoName"
 			>
 				{{ repo.name }}
 			</a>

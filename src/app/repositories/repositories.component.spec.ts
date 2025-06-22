@@ -68,4 +68,12 @@ describe('TestComponent', () => {
 			expect(repoStarsEl!.textContent).toContain(String(dummyRepos[index].stargazers_count));
 		});
 	}));
+
+	it('should toggle showRepos when toggleRepos is called', () => {
+		expect(component.showRepos()).toBe(false);
+		component.toggleRepos();
+		expect(component.showRepos()).toBe(true);
+		component.toggleRepos();
+		expect(component.showRepos()).toBe(false);
+	});
 });

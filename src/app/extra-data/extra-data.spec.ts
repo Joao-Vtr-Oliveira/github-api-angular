@@ -58,4 +58,15 @@ describe('TestComponent', () => {
 		);
 		expect(anchorCompany.textContent).toContain(newDummy.company?.replace('@', ''));
 	}));
+	
+	it('company anchor should be null', fakeAsync(() => {
+		fixture.componentRef.setInput('user', dummy);
+		tick();
+		fixture.detectChanges();
+
+		const anchorCompany: HTMLAnchorElement | null = fixture.nativeElement.querySelector(
+			'[data-testid="anchorCompany-extra-data"]'
+		);
+		expect(anchorCompany).toBe(null)
+	}));
 });

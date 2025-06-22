@@ -25,7 +25,18 @@ describe('TestComponent', () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
-	it('should have dummy login on anchor', fakeAsync(() => {
+	it('li length should be the same as the dummy ', fakeAsync(() => {
+		fixture.componentRef.setInput('repos', dummyRepos);
+		tick();
+		fixture.detectChanges();
+
+		const liDebugItens: HTMLLIElement[] =
+			fixture.nativeElement.querySelectorAll(
+				'[data-testid="liItem-repositories-component"]'
+			);
+		expect(liDebugItens.length).toBe(dummyRepos.length);
+	}));
+	it('li component should have the same name of the dummy repo', fakeAsync(() => {
 		fixture.componentRef.setInput('repos', dummyRepos);
 		tick();
 		fixture.detectChanges();

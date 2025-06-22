@@ -25,6 +25,7 @@ export const dummyRepos: RepoType[] = [
 		stargazers_count: 3,
 		commits_url: '',
 		forks_count: 2,
+		language: 'TypeScript',
 	},
 	{
 		id: 2,
@@ -33,6 +34,7 @@ export const dummyRepos: RepoType[] = [
 		stargazers_count: 5,
 		commits_url: '',
 		forks_count: 0,
+		language: 'TypeScript',
 	},
 	{
 		id: 3,
@@ -41,5 +43,6 @@ export const dummyRepos: RepoType[] = [
 		stargazers_count: 8,
 		commits_url: '',
 		forks_count: 0,
+		language: 'TypeScript',
 	},
 ];
